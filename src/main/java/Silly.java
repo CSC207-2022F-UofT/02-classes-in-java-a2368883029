@@ -72,15 +72,22 @@ public class Silly implements Comparable<Silly>{
         this.name = "Silly #" + number;
     }
 
-    /**
-     * TODO (Task 1): Create another constructor that takes in TWO parameters,
+    /*
+     * (Task 1): Create another constructor that takes in TWO parameters,
      *       both of which are strings.
      *       Afterwards, set this.name to the concatenation of both
      *       strings (e.g. this.name = [first string] + [second string]).
      *       Make sure you document this method!
      */
-
-
+    /**
+     * Creates a new Silly object.
+     * This constructor takes in both name and number to construct a silly
+     * @param name1 the name of this Silly instance
+     * @param name2 the name of this Silly instance
+     */
+    public Silly(String name1, String name2) {
+        this.name = name1 + name2;
+    }
 
 
 
@@ -116,7 +123,7 @@ public class Silly implements Comparable<Silly>{
         y.countStatic();
         x.countStatic();
         x.countStatic();
-        int[] expected_values = {};
+        int[] expected_values = {1, 2, 3, 4};
 
         System.out.println("The countStatic calls will return " + Arrays.toString(expected_values));
     }
@@ -134,6 +141,7 @@ public class Silly implements Comparable<Silly>{
     @Override
     public String toString(){
         // TODO (Task 3): Implement the body of this method!
+        return this.name;
     }
 
     /**
@@ -149,15 +157,14 @@ public class Silly implements Comparable<Silly>{
     @Override
     public boolean equals(Object o) {
         /**
-         * TODO (Task 4): Complete the body of this method!
+         * (Task 4): Complete the body of this method!
          *                We've started it by checking the type of o for you.
          *                You just need to return true if the names are equal.
          */
-        if (!(o instanceof Silly)){
+        if (!(o instanceof Silly other)){
             return false;
         }
-
-        Silly other = (Silly) o; // To access .name of o, we need to cast it.
+        return other.name.equals(this.name);
 
         // Hint: to compare strings, we need to use .equals()
         //       e.g. s1.equals(s2)
@@ -186,7 +193,7 @@ public class Silly implements Comparable<Silly>{
     @Override
     public int compareTo(Silly other) {
         /**
-         * TODO (Task 5): Implement the body of this method.
+         * (Task 5): Implement the body of this method.
          *                A positive number should be returned if this.name
          *                is longer than other.name, a negative number if
          *                other.name is longer than this.name, and 0 if
@@ -194,6 +201,7 @@ public class Silly implements Comparable<Silly>{
          *                You can get the length of a string by using the
          *                .length() method.
          */
+        return this.name.length() - other.name.length();
     }
 
     /*
